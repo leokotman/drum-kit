@@ -1,4 +1,7 @@
 "use strict";
+let drumsWindowHeight = window.innerHeight;
+document.body.style.setProperty("height", drumsWindowHeight);
+
 let drumBtns = document.querySelectorAll(".drum");
 
 drumBtns.forEach(function (btn) {
