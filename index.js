@@ -7,8 +7,14 @@ let drumBtns = document.querySelectorAll(".drum");
 drumBtns.forEach(function (btn) {
   btn.addEventListener("click", function () {
     playDrum(btn.textContent);
+    animateButton(btn.textContent);
   });
 });
+document.addEventListener("keydown", function (event) {
+  playDrum(event.key);
+  animateButton(event.key);
+});
+
 
 function playDrum(key) {
   switch (key) {
@@ -44,7 +50,11 @@ function playDrum(key) {
       console.log("error button");
   }
 }
+function animateButton(currentButton) {
+  const activeButton = document.querySelector("." + currentButton);
+  activeButton.classList.add('pressed');
 
-document.addEventListener("keydown", function (event) {
-  playDrum(event.key);
-});
+  setTimeout(function(){
+    activeButton.classList.remove('pressed');
+  }, 100);
+}
